@@ -1,0 +1,12 @@
+1. compile Prompt.java
+javac Prompt.java
+
+
+2. generate Prompt JNI head file
+javah Prompt
+
+gcc -g -shared -I/home/shizh/tools/jdk1.6.0_13/include/  -I/home/shizh/tools/jdk1.6.0_13/include/linux/ Prompt.c -o libPrompt.so
+
+
+
+

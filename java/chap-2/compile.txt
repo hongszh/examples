@@ -1,0 +1,47 @@
+1. compile HelloWorld.java
+javac HelloWorld.java
+
+
+2. generate HelloWorld JNI head file
+javah HelloWorld
+
+gcc -g -shared -I/home/shizh/tools/jdk1.6.0_13/include/  -I/home/shizh/tools/jdk1.6.0_13/include/linux/ HelloWorld.c -o libHelloWorld.so
+
+
+$ java HelloWorld
+hello World
+Exception in thread "main" java.lang.UnsatisfiedLinkError: HelloWorld.print()V
+        at HelloWorld.print(Native Method)
+        at HelloWorld.main(HelloWorld.java:19)
+
+这个错误是因为找不到print的定义，因为HelloWord.c是从HelloWorld.h拷贝过去的，所以忘了删掉里面的#ifndef _Included_HelloWorld,所以HelloWorld.c里面的这个print实现确实没有被编译。
+
+HelloWorld.c的代码如下:
+------------------------------------------
+#include <jni.h>
+/* Header for class HelloWorld */
+#include <stdio.h>
+#include "HelloWorld.h"
+
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+/*
+ * Class:     HelloWorld
+ * Method:    print
+ * Signature: ()V
+ */
+JNIEXPORT void JNICALL Java_HelloWorld_print
+  (JNIEnv *e, jobject o)
+{
+    printf("Hello World.\n");
+    return;
+}
+
+#ifdef __cplusplus
+}
+#endif
+------------------------------------------
+
