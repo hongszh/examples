@@ -1,3 +1,5 @@
+0. export LD_LIBRARY_PATH=.
+
 1. compile Prompt.java
 javac Prompt.java
 
@@ -7,6 +9,7 @@ javah Prompt
 
 gcc -g -shared -I/home/shizh/tools/jdk1.6.0_13/include/  -I/home/shizh/tools/jdk1.6.0_13/include/linux/ Prompt.c -o libPrompt.so
 
-
+3. run Prompt
+java Prompt
 
 
