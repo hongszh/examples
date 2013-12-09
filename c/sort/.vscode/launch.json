@@ -1,0 +1,26 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        
+        {
+            "name": "C++ Launch",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "/home/shizh/awork/testcode/sample/c/sort/sort.out",
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "/home/shizh/awork/testcode/sample/c/sort",
+            "environment": [],
+            "externalConsole": true,
+            "linux": {
+                "MIMode": "gdb"
+            },
+            "osx": {
+                "MIMode": "lldb"
+            },
+            "windows": {
+                "MIMode": "gdb"
+            }
+        },
+    ]
+}
