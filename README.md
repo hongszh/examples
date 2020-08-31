@@ -1,4 +1,4 @@
-sample
+examples
 ======
 
-store study sample code
+store study code
